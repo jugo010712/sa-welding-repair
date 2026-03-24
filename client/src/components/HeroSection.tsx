@@ -123,9 +123,9 @@ export default function HeroSection() {
             <button onClick={scrollToContact} className="btn-primary text-base px-8 py-4">
               Get a Free Quote
             </button>
-            <a href="tel:2106273537" className="btn-outline text-base px-8 py-4 flex items-center gap-2 justify-center">
+            <a href="tel:2102015691" className="btn-outline text-base px-8 py-4 flex items-center gap-2 justify-center">
               <Phone size={16} />
-              Call (210) 627-3537
+              Call (210) 201-5691
             </a>
           </motion.div>
 

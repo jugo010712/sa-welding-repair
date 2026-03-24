@@ -345,7 +345,7 @@ export default function ContactSection() {
               </p>
 
               <a
-                href="tel:2106273537"
+                href="tel:2102015691"
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontWeight: 600,
@@ -359,7 +359,7 @@ export default function ContactSection() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#E8920A")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#FF6B1A")}
               >
-                (210) 627-3537
+                (210) 201-5691
               </a>
 
               <div
