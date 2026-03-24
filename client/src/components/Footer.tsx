@@ -89,7 +89,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               <a
-                href="tel:2106273537"
+                href="tel:2102015691"
                 className="flex items-center gap-2"
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
@@ -102,7 +102,7 @@ export default function Footer() {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#8A9BB0")}
               >
                 <Phone size={13} style={{ color: "#FF6B1A" }} />
-                (210) 627-3537
+                (210) 201-5691
               </a>
               <a
                 href="mailto:angellg0921@gmail.com"

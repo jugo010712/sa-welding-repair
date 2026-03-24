@@ -233,7 +233,7 @@ export default function WorkSection() {
             More photos being added as jobs are completed.
           </p>
           <a
-            href="tel:2106273537"
+            href="tel:2102015691"
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 700,
@@ -247,7 +247,7 @@ export default function WorkSection() {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Call (210) 627-3537 to discuss your project →
+            Call (210) 201-5691 to discuss your project →
           </a>
         </motion.div>
       </div>
