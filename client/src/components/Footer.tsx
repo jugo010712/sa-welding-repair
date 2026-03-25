@@ -105,7 +105,7 @@ export default function Footer() {
                 (210) 201-5691
               </a>
               <a
-                href="mailto:angellg0921@gmail.com"
+                href="mailto:saweldingrepair@gmail.com"
                 className="flex items-center gap-2"
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
@@ -118,7 +118,7 @@ export default function Footer() {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#8A9BB0")}
               >
                 <Mail size={13} style={{ color: "#FF6B1A" }} />
-                angellg0921@gmail.com
+                saweldingrepair@gmail.com
               </a>
               <div
                 className="flex items-center gap-2"
