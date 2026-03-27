@@ -15,7 +15,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Shield, Award } from "lucide-react";
 
-const ABOUT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663386692308/RBiCMj8UwbRJYDJd8hSFSR/about-welder-7SoSxvu3hy7LCUu2uCQqms.webp";
 
 const credentials = [
   { icon: <Shield size={14} />, label: "Licensed" },
@@ -48,11 +47,19 @@ export default function AboutSection() {
               className="relative overflow-hidden"
               style={{ borderRadius: "4px" }}
             >
-              <img
-                src={ABOUT_IMAGE}
-                alt="SA Welding & Repair — owner at work in the shop"
-                className="w-full object-cover"
-                style={{ maxHeight: "520px", objectPosition: "center top" }}
+              <video
+                src="/Brother Working.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{
+                  width: "100%",
+                  maxHeight: "620px",
+                  objectFit: "cover",
+                  objectPosition: "center 65%",
+                  display: "block",
+                }}
               />
               {/* Orange corner accent */}
               <div
@@ -127,7 +134,7 @@ export default function AboutSection() {
               style={{ fontFamily: "'DM Sans', sans-serif", color: "#FFF3E0", fontSize: "1rem", lineHeight: 1.75 }}
             >
               <p>
-                My name is [Name].
+                My name is Angel.
                 <br />
                 I'm a San Antonio-trained welder and this is my business.
               </p>

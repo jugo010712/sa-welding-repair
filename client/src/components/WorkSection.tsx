@@ -11,36 +11,61 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Camera } from "lucide-react";
-
-const GATE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663386692308/RBiCMj8UwbRJYDJd8hSFSR/custom-gate-ifkMx8qRhRUx9QSKbEg45o.webp";
-const CARPORT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663386692308/RBiCMj8UwbRJYDJd8hSFSR/carport-install-aofJ5nj5Vr6gxWQBQituu4.webp";
 
 type GalleryItem =
-  | { type: "photo"; image: string; tag: string; location: string; description: string }
-  | { type: "placeholder"; label: string };
+  | { type: "photo"; image: string; tag: string; location: string; description: string; objectPosition?: string; tileHeight?: string }
+  | { type: "video"; src: string; tag: string; location: string; description: string };
 
 const galleryItems: GalleryItem[] = [
   {
     type: "photo",
-    image: GATE_IMAGE,
-    tag: "CUSTOM GATE INSTALLATION",
+    image: "/IMG_3034.jpg",
+    tag: "RESIDENTIAL ENTRY GATE",
     location: "San Antonio, TX",
-    description: "Ornamental iron driveway gate — new install with brick pillar integration.",
+    description: "Custom steel residential entry gate — fabricated and installed on-site.",
+    objectPosition: "center center",
+    tileHeight: "640px",
   },
   {
     type: "photo",
-    image: CARPORT_IMAGE,
-    tag: "STEEL CARPORT BUILD",
+    image: "/IMG_3022.jpg",
+    tag: "BALCONY SAFETY RAILING",
     location: "San Antonio, TX",
-    description: "Heavy-gauge steel carport fabricated and installed on-site.",
+    description: "Steel safety railing installed on apartment balcony to prevent falls.",
+    objectPosition: "85% 85%",
+    tileHeight: "640px",
   },
-  { type: "placeholder", label: "Gate or Fence Job" },
-  { type: "placeholder", label: "A/C Cage Install" },
-  { type: "placeholder", label: "BBQ Pit / Smoker Build" },
-  { type: "placeholder", label: "Trailer Repair" },
-  { type: "placeholder", label: "Custom Fabrication" },
-  { type: "placeholder", label: "Metal Repair" },
+  {
+    type: "photo",
+    image: "/IMG_5759.jpg",
+    tag: "PRECISION MIG WELD",
+    location: "San Antonio, TX",
+    description: "Clean MIG weld on structural steel — tight bead, no spatter.",
+    objectPosition: "center 65%",
+  },
+  {
+    type: "photo",
+    image: "/IMG_5628.jpg",
+    tag: "QUALITY WELD FINISH",
+    location: "San Antonio, TX",
+    description: "Finished weld showing clean bead and professional craftsmanship.",
+    objectPosition: "center 85%",
+  },
+  {
+    type: "photo",
+    image: "/IMG_5766.jpg",
+    tag: "STRUCTURAL STEEL WELD",
+    location: "San Antonio, TX",
+    description: "Structural steel weld work — built to last.",
+    objectPosition: "center center",
+  },
+  {
+    type: "video",
+    src: "/IMG_5630.mp4",
+    tag: "WELDING IN ACTION",
+    location: "San Antonio, TX",
+    description: "Watch the craft — real work, real skill.",
+  },
 ];
 
 export default function WorkSection() {
@@ -96,121 +121,92 @@ export default function WorkSection() {
               className="relative overflow-hidden group"
               style={{
                 borderRadius: "4px",
-                // First two items span 2 columns on desktop for visual hierarchy
                 gridColumn: index < 2 ? "span 2 / span 2" : undefined,
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.07 }}
             >
-              {item.type === "photo" ? (
-                <>
-                  <img
-                    src={item.image}
-                    alt={item.tag}
-                    className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{
-                      height: index < 2 ? "340px" : "220px",
-                      objectPosition: "center",
-                    }}
-                  />
-                  {/* Hover overlay */}
-                  <div
-                    className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: "linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.5) 60%, transparent 100%)",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.65rem",
-                        color: "#FF6B1A",
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        marginBottom: "0.2rem",
-                      }}
-                    >
-                      {item.tag} · {item.location}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: "0.8rem",
-                        color: "#C9D4E0",
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {item.description}
-                    </p>
-                  </div>
-                  {/* Always-visible label at bottom */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 px-3 py-2 group-hover:opacity-0 transition-opacity duration-300"
-                    style={{
-                      background: "linear-gradient(to top, rgba(13,13,13,0.85) 0%, transparent 100%)",
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontFamily: "'JetBrains Mono', monospace",
-                        fontSize: "0.6rem",
-                        color: "#FF6B1A",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {item.tag}
-                    </p>
-                  </div>
-                </>
-              ) : (
-                /* Placeholder slot */
-                <div
-                  className="flex flex-col items-center justify-center text-center"
+              {item.type === "video" ? (
+                <video
+                  src={item.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   style={{
+                    width: "100%",
                     height: "220px",
-                    backgroundColor: "#1E2329",
-                    border: "1px dashed #2E3440",
-                    borderRadius: "4px",
+                    objectFit: "cover",
+                    objectPosition: "center center",
+                    display: "block",
                   }}
-                >
-                  <Camera
-                    size={24}
-                    style={{ color: "#2E3440", marginBottom: "0.5rem" }}
-                  />
-                  <p
-                    style={{
-                      fontFamily: "'Barlow Condensed', sans-serif",
-                      fontWeight: 600,
-                      fontSize: "0.8rem",
-                      color: "#2E3440",
-                      letterSpacing: "0.05em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "0.7rem",
-                      color: "#2E3440",
-                      marginTop: "0.25rem",
-                    }}
-                  >
-                    Photo coming soon
-                  </p>
-                </div>
-              )}
-
-              {/* Orange bottom border for photo tiles */}
-              {item.type === "photo" && (
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-0.5"
-                  style={{ backgroundColor: "#FF6B1A" }}
+                />
+              ) : (
+                <img
+                  src={item.image}
+                  alt={item.tag}
+                  className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{
+                    height: item.tileHeight ?? (index < 2 ? "340px" : "220px"),
+                    objectPosition: item.objectPosition ?? "center center",
+                  }}
                 />
               )}
+              {/* Hover overlay */}
+              <div
+                className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: "linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.5) 60%, transparent 100%)",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: "0.65rem",
+                    color: "#FF6B1A",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    marginBottom: "0.2rem",
+                  }}
+                >
+                  {item.tag} · {item.location}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.8rem",
+                    color: "#C9D4E0",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {item.description}
+                </p>
+              </div>
+              {/* Always-visible label at bottom */}
+              <div
+                className="absolute bottom-0 left-0 right-0 px-3 py-2 group-hover:opacity-0 transition-opacity duration-300"
+                style={{
+                  background: "linear-gradient(to top, rgba(13,13,13,0.85) 0%, transparent 100%)",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: "0.6rem",
+                    color: "#FF6B1A",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {item.tag}
+                </p>
+              </div>
+              {/* Orange bottom border */}
+              <div
+                className="absolute bottom-0 left-0 right-0 h-0.5"
+                style={{ backgroundColor: "#FF6B1A" }}
+              />
             </motion.div>
           ))}
         </div>

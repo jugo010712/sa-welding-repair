@@ -44,10 +44,14 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would send to a backend or email service
-    setSubmitted(true);
+    const res = await fetch("https://formspree.io/f/mwvwpbqr", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(formData),
+    });
+    if (res.ok) setSubmitted(true);
   };
 
   return (
